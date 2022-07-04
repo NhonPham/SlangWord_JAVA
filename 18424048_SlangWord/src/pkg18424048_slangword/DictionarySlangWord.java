@@ -143,4 +143,103 @@ public class DictionarySlangWord {
             System.out.println("Slang word does not exist!");
         }
     }
+
+    public void ShowHistory() {
+
+        try ( BufferedReader br = new BufferedReader(new FileReader("history.txt"))) {
+            String contentLine = "";
+            System.out.println("List of words that have been searched: ");
+            while ((contentLine = br.readLine()) != null) {
+                System.out.println(contentLine);
+            }
+            br.close();
+        } catch (IOException e) {
+
+            System.out.println("File not found or File error!");
+        }
+    }
+
+    private static void SaveFileFromMap(Map<String, List<String>> DB) throws IOException {
+        String fileName = "slang.txt";
+
+        try ( BufferedWriter br = new BufferedWriter(new FileWriter(fileName))) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Slag`Meaning\n");
+            DB.entrySet().forEach((var i) -> {
+
+                String key = i.getKey();
+                List<String> ListMeanValid = i.getValue();
+                sb.append(key).append("`").append(ListMeanValid.get(0));
+                for (int j = 1; j < ListMeanValid.size(); j++) {
+                    sb.append("|").append(ListMeanValid.get(j));
+
+                }
+                sb.append("\n");
+
+            });
+
+            br.write(sb.toString());
+
+            br.flush();
+            br.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void EditASlangWord(Map<String, List<String>> DB) throws IOException {
+        System.out.println("Enter Slang Word to edit: ");
+        Scanner sc = new Scanner(System.in);
+        String word = "";
+        String meanWord = "";
+        word = sc.nextLine();
+        String choice = "yes";
+        String anothermean = "";
+
+        int index = 0;
+        boolean isValid = true;
+        if (DB.containsKey(word)) {
+            System.out.println("Enter a new Definition: ");
+            meanWord = sc.nextLine();
+
+            System.out.println("Old Definition: ");
+            DB.get(word).forEach(l -> {
+                System.out.print(l + ", ");
+            });
+            System.out.print("\nEnter the index to edit: ");
+            index = sc.nextInt();
+
+            try {
+                DB.get(word).set(index, meanWord);
+
+                throw new IndexOutOfBoundsException();
+            } catch (IndexOutOfBoundsException e) {
+
+                if (e.getMessage() != null) {
+                    isValid = false;
+                    System.out.println(e.getMessage());
+                    System.out.println("The entered index is outside of the list of available indexes of the value, Please do option No.5 again.");
+                }
+
+            }
+        } else {
+            System.out.println("This Slang word does not exist!");
+        }
+        if (isValid) {
+            do {
+
+                System.out.println("Would you like to add another meaning to this word?yes/no: ");
+                Scanner sc1 = new Scanner(System.in);
+                choice = sc1.nextLine();
+                if (choice.equals("yes")) {
+                    System.out.println("Enter new meaning to add: ");
+                    anothermean = sc1.nextLine();
+                    DB.get(word).add(anothermean);
+                }
+
+            } while (choice.equals("yes"));
+            System.out.println("Edited success!");
+            SaveFileFromMap(DB);
+        }
+    }
 }

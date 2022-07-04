@@ -75,6 +75,14 @@ public class Main {
                     DS.FindbyDefinitionWord(DB);
                     break;
                 }
+                case 3 -> {
+                    DS.ShowHistory();
+                    break;
+                }
+                case 5 -> {
+                    DS.EditASlangWord(DB);
+                    break;
+                }
                 case 11 -> {
                     break;
                 }

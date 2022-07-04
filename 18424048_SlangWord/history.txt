@@ -1,2 +1,4 @@
 ~ : Denotes Sarcasm
 ~ :  Put At The End Of A Word To Make It Longer
+^^ : Happy
+^^ : funny
