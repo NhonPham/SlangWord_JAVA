@@ -6,7 +6,7 @@ package pkg18424048_slangword;
 
 /**
  *
- * @author cozih
+ * @author 18424048 Pham Huu Nhon
  */
 public class Word {
     private String SlangWord;
