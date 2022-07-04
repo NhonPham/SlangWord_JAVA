@@ -5,13 +5,16 @@
 package pkg18424048_slangword;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
@@ -76,4 +79,28 @@ public class DictionarySlangWord {
         });
     }
 
+    public void FindbySlangWord(Map<String, List<String>> DB) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a slang word to find: ");
+        String SlangWord = sc.nextLine();
+
+        //save history
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter("history.txt", true))) {
+            if (DB.containsKey(SlangWord)) {
+                DB.get(SlangWord).forEach(l -> {
+                    try {
+                        System.out.println("Definition: " + l);
+                        bw.write(SlangWord + " : " + l + "\n");
+                    } catch (IOException ex) {
+                    }
+                });
+            } else {
+                System.out.println("Definition word does not exist!");
+            }
+
+            bw.flush();
+            bw.close();
+        } catch (IOException e) {
+        }
+    }
 }

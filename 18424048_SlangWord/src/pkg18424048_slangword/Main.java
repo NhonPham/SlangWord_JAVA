@@ -67,6 +67,13 @@ public class Main {
                     }
                     break;
                 }
+                case 1 -> {
+                    DS.FindbySlangWord(DB);
+                    break;
+                }
+                case 11 -> {
+                    break;
+                }
                 default -> {
                     System.out.println("Invalid, please choose again.");
                     break;
