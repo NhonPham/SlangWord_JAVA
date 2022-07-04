@@ -9,13 +9,14 @@ package pkg18424048_slangword;
  * @author 18424048 Pham Huu Nhon
  */
 public class Word {
+
     private String SlangWord;
     private String Mean;
-    
+
     public Word() {
         super();
     }
-    
+
     public Word(String SlangWord, String Mean) {
         this.SlangWord = SlangWord;
         this.Mean = Mean;
@@ -36,5 +37,5 @@ public class Word {
     public void setMean(String Mean) {
         this.Mean = Mean;
     }
-    
+
 }
