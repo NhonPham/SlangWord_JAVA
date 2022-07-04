@@ -4,9 +4,11 @@
  */
 package pkg18424048_slangword;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
@@ -17,9 +19,10 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, Exception {
         // TODO code application logic here
         Map<String, List<String>> DB = new HashMap<>();
+        Main_Menu(DB);
     }
 
     public static void Menu() {
@@ -38,5 +41,12 @@ public class Main {
         System.out.println("11. Exit");
 
         System.out.print("Enter the number to select: ");
+    }
+
+    public static void Main_Menu(Map<String, List<String>> DB) throws InterruptedException, IOException, Exception {
+
+        DictionarySlangWord DS = new DictionarySlangWord();
+        DS.ImportSlangWordListFromTXT(DB);
+
     }
 }
