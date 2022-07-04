@@ -28,14 +28,14 @@ public class Main {
     public static void Menu() {
         System.out.println("------------------MENU------------------");
         System.out.println("0. Show list of all Slang Word");
-        System.out.println("1. Find by slang word ");
+        System.out.println("1. Find by Slang Word");
         System.out.println("2. Find by the definition");
         System.out.println("3. Show history, see the list of searched words");
         System.out.println("4. Add a new Slang Word");
         System.out.println("5. Edit a Slang Word");
         System.out.println("6. Delete a Slang Word");
         System.out.println("7. Reset the Slang Word list");
-        System.out.println("8. On this day slang word");
+        System.out.println("8. On this day Slang Word");
         System.out.println("9. Quiz With Random Slang Word");
         System.out.println("10. Quiz With Random Definition");
         System.out.println("11. Exit");
@@ -69,6 +69,10 @@ public class Main {
                 }
                 case 1 -> {
                     DS.FindbySlangWord(DB);
+                    break;
+                }
+                case 2 -> {
+                    DS.FindbyDefinitionWord(DB);
                     break;
                 }
                 case 11 -> {

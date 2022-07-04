@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -101,6 +102,45 @@ public class DictionarySlangWord {
             bw.flush();
             bw.close();
         } catch (IOException e) {
+        }
+    }
+
+    public void FindbyDefinitionWord(Map<String, List<String>> DB) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a Definition word to find: ");
+        String DFWord = sc.nextLine();
+        var wrapper = new Object() {
+            int checkExist = 0;
+            int exist = 0;
+        };
+
+        DB.entrySet().forEach((var i) -> {
+            List<String> definition = i.getValue();
+
+            definition.forEach(df -> {
+                boolean isContain = df.toLowerCase().contains(DFWord.toLowerCase());
+                if (isContain) {
+                    System.out.print(i.getKey() + " : ");
+
+                    List<String> value = i.getValue();
+
+                    String delimiter = ", ";
+
+                    String valueList = value.stream()
+                            .map(Object::toString)
+                            .collect(Collectors.joining(delimiter));
+
+                    System.out.println(valueList);
+                    wrapper.checkExist = 1;
+                    wrapper.exist += 1;
+                } else {
+                    wrapper.checkExist = 0;
+                }
+            });
+
+        });
+        if (wrapper.checkExist == 0 && wrapper.exist == 0) {
+            System.out.println("Slang word does not exist!");
         }
     }
 }
