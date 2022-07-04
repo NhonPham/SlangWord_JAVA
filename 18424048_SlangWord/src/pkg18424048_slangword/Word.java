@@ -9,5 +9,32 @@ package pkg18424048_slangword;
  * @author cozih
  */
 public class Word {
+    private String SlangWord;
+    private String Mean;
+    
+    public Word() {
+        super();
+    }
+    
+    public Word(String SlangWord, String Mean) {
+        this.SlangWord = SlangWord;
+        this.Mean = Mean;
+    }
+
+    public String getSlangWord() {
+        return SlangWord;
+    }
+
+    public void setSlangWord(String SlangWord) {
+        this.SlangWord = SlangWord;
+    }
+
+    public String getMean() {
+        return Mean;
+    }
+
+    public void setMean(String Mean) {
+        this.Mean = Mean;
+    }
     
 }
