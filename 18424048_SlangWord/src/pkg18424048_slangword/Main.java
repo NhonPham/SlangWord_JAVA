@@ -32,7 +32,7 @@ public class Main {
         System.out.println("2. Find by the definition");
         System.out.println("3. Show history, see the list of searched words");
         System.out.println("4. Add a new Slang Word");
-        System.out.println("5. Eddit a Slang Word");
+        System.out.println("5. Edit a Slang Word");
         System.out.println("6. Delete a Slang Word");
         System.out.println("7. Reset the Slang Word list");
         System.out.println("8. On this day slang word");
@@ -44,9 +44,35 @@ public class Main {
     }
 
     public static void Main_Menu(Map<String, List<String>> DB) throws InterruptedException, IOException, Exception {
-
+        int choice;
         DictionarySlangWord DS = new DictionarySlangWord();
         DS.ImportSlangWordListFromTXT(DB);
 
+        do {
+            Scanner scanner0 = new Scanner(System.in);
+            Menu();
+
+            choice = scanner0.nextInt();
+
+            System.out.println("----------------------------------------");
+
+            switch (choice) {
+
+                case 0 -> {
+                    if (!DS.getSlangWordList().isEmpty()) {
+                        DS.ShowSlangWordList();
+                    } else {
+                        System.out.println("The list is empty! Please Import data!");
+                        Thread.sleep(500);
+                    }
+                    break;
+                }
+                default -> {
+                    System.out.println("Invalid, please choose again.");
+                    break;
+                }
+            }
+
+        } while (choice != 11);
     }
 }
