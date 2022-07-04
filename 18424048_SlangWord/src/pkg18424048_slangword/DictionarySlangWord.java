@@ -67,7 +67,13 @@ public class DictionarySlangWord {
 
             System.out.println("File not found or File error!");
         }
-
+    }
+    
+    public void ShowSlangWordList() {
+        System.out.format("Slang Word Dictionary: \n");
+        SlangWordList.forEach(sl -> {
+            System.out.println("Slang Word: " + sl.getSlangWord() + " Mean: " + sl.getMean());
+        });
     }
 
 }
