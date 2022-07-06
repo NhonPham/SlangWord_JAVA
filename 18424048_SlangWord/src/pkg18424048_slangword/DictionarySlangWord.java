@@ -294,4 +294,27 @@ public class DictionarySlangWord {
         }
     }
 
+    public void ResetList() throws IOException {
+        File dir = new File(".");
+
+        String source = dir.getCanonicalPath() + File.separator + "SlangWordPrimitive.txt";
+        String dest = dir.getCanonicalPath() + File.separator + "slang.txt";
+
+        File fin = new File(source);
+        FileInputStream fis = new FileInputStream(fin);
+        BufferedWriter out;
+        try ( BufferedReader in = new BufferedReader(new InputStreamReader(fis))) {
+            FileWriter fstream = new FileWriter(dest);
+            out = new BufferedWriter(fstream);
+            String aLine = null;
+            while ((aLine = in.readLine()) != null) {
+
+                out.write(aLine);
+                out.newLine();
+            }
+        }
+        System.out.println("Reset Success!!!");
+        out.close();
+    }
+
 }

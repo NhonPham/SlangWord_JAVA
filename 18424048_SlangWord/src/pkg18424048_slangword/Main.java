@@ -91,6 +91,10 @@ public class Main {
                     DS.DeleteASlangWord(DB);
                     break;
                 }
+                case 7 -> {
+                    DS.ResetList();
+                    break;
+                }
                 case 11 -> {
                     break;
                 }
