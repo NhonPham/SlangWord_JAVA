@@ -271,6 +271,27 @@ public class DictionarySlangWord {
         SaveFileFromMap(DB);
     }
 
-    
+    public void DeleteASlangWord(Map<String, List<String>> DB) throws IOException {
+        System.out.println("Enter a Slang Word to Delete: ");
+        Scanner sc = new Scanner(System.in);
+        String word = "";
+        String checkDelete = "no";
+        word = sc.nextLine();
+        if (DB.containsKey(word)) {
+
+            System.out.println("Do you really want to remove this word from the list?yes/no");
+            Scanner sc1 = new Scanner(System.in);
+            checkDelete = sc1.nextLine();
+
+            if (!checkDelete.equals("yes")) {
+            } else {
+                DB.remove(word);
+                System.out.println("Deleted success!");
+                SaveFileFromMap(DB);
+            }
+        } else {
+            System.out.println("Slang Word does not exist!");
+        }
+    }
 
 }

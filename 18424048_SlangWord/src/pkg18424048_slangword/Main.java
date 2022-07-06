@@ -87,6 +87,10 @@ public class Main {
                     DS.EditASlangWord(DB);
                     break;
                 }
+                case 6 -> {
+                    DS.DeleteASlangWord(DB);
+                    break;
+                }
                 case 11 -> {
                     break;
                 }
