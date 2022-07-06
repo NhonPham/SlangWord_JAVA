@@ -95,6 +95,10 @@ public class Main {
                     DS.ResetList();
                     break;
                 }
+                case 8 -> {
+                    DS.OnThisDaySlangWord(DB);
+                    break;
+                }
                 case 11 -> {
                     break;
                 }

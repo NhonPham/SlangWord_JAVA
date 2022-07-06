@@ -317,4 +317,23 @@ public class DictionarySlangWord {
         out.close();
     }
 
+    public void OnThisDaySlangWord(Map<String, List<String>> DB) {
+        Set<String> keySet = DB.keySet();
+        List<String> keyList = new ArrayList<>(keySet);
+
+        int size = keyList.size();
+        int randIdx = new Random().nextInt(size);
+
+        String randomKey = keyList.get(randIdx);
+        List<String> ListMeanValue = DB.get(randomKey);
+
+        String delimiter = ", ";
+
+        String valueList = ListMeanValue.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(delimiter));
+        System.out.println("On this day Slang Word: ");
+        System.out.println("Slang Word: " + randomKey + " - Definition: " + valueList);
+
+    }
 }
