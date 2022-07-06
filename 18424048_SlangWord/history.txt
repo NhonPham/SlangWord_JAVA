@@ -2,3 +2,4 @@
 ~ :  Put At The End Of A Word To Make It Longer
 ^^ : Happy
 ^^ : funny
+HXH : Hunter X Hunter

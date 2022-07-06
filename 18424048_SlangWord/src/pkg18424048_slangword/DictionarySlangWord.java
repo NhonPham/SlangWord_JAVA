@@ -6,15 +6,20 @@ package pkg18424048_slangword;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -242,4 +247,30 @@ public class DictionarySlangWord {
             SaveFileFromMap(DB);
         }
     }
+
+    public void AddANewSlangWord(Map<String, List<String>> DB) throws IOException {
+        System.out.println("--- Add a new slang word and its meaning ---");
+        Word w = new Word();
+        w.EnterNewSlangWord();
+        List<String> ListMeanValid;
+        ListMeanValid = new ArrayList<>();
+
+        do {
+
+            if (DB.containsKey(w.getSlangWord())) {
+                System.out.println("Slang entered word already exists in the list, please enter a new word!");
+                w.EnterNewSlangWord();
+            }
+
+        } while (DB.containsKey(w.getSlangWord()));
+        w.EnterDefinitionWord(ListMeanValid);
+
+        Collections.addAll(SlangWordList, w);
+        DB.put(w.getSlangWord(), ListMeanValid);
+        System.out.println("Added Success!");
+        SaveFileFromMap(DB);
+    }
+
+    
+
 }

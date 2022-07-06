@@ -79,6 +79,10 @@ public class Main {
                     DS.ShowHistory();
                     break;
                 }
+                case 4 -> {
+                    DS.AddANewSlangWord(DB);
+                    break;
+                }
                 case 5 -> {
                     DS.EditASlangWord(DB);
                     break;
