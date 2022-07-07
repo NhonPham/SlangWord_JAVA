@@ -446,4 +446,104 @@ public class DictionarySlangWord {
         }
     }
     
+    public void QuizWithRandomDefinition(Map<String, List<String>> DB) {
+
+        List<String> keyList = new ArrayList<>(DB.keySet());
+
+        int size = keyList.size(); //7640
+        int randIdx;
+        String randomSlangWord = "";
+        List<String> List = new ArrayList<>();
+        ArrayList<String> Key = new ArrayList<>();
+
+        for (int i = 1; i <= 4; i++) {
+            randIdx = new Random().nextInt(size);//randome num
+            randomSlangWord = keyList.get(randIdx);//get randomSlangWord key
+            Key.add(randomSlangWord);
+
+            List<String> ListMeanValue = DB.get(randomSlangWord);//get value with randomSlangWord key
+            List.addAll(ListMeanValue);
+        }
+        ;
+        String valueMean = List.get(new Random().nextInt(4));
+
+        System.out.println("What is the Slang word of this " + valueMean.toUpperCase() + "?");
+        Collections.shuffle(Key);
+
+        System.out.println("A." + Key.get(0));
+        System.out.println("B." + Key.get(1));
+        System.out.println("C." + Key.get(2));
+        System.out.println("D." + Key.get(3));
+
+        String getkeyfromvalue = "";
+        for (Map.Entry<String, List<String>> entry : DB.entrySet()) {
+            if (entry.getValue().contains(valueMean)) {
+//                System.out.println(valueMean + " is in " + entry.getKey());
+                getkeyfromvalue = entry.getKey();
+            }
+        }
+
+        System.out.println("Please choose the correct answer: ");
+        String choice = "";
+        Scanner sc = new Scanner(System.in);
+        choice = sc.nextLine();
+        var wrapper = new Object() {
+            boolean correct = false;
+        };
+
+        switch (choice.toLowerCase()) {
+            case "a" -> {
+                if (Key.get(0).compareTo(getkeyfromvalue) == 0) {
+                    wrapper.correct = true;
+                }
+
+                if (wrapper.correct) {
+                    System.out.println("Correct!!!");
+                } else {
+                    System.out.println("Wrong answer.");
+                }
+            }
+
+            case "b" -> {
+                if (Key.get(1).compareTo(getkeyfromvalue) == 0) {
+                    wrapper.correct = true;
+                }
+
+                if (wrapper.correct) {
+                    System.out.println("Correct!!!");
+                } else {
+                    System.out.println("Wrong answer.");
+                }
+            }
+
+            case "c" -> {
+                if (Key.get(2).compareTo(getkeyfromvalue) == 0) {
+                    wrapper.correct = true;
+                }
+
+                if (wrapper.correct) {
+                    System.out.println("Correct!!!");
+                } else {
+                    System.out.println("Wrong answer.");
+                }
+            }
+
+            case "d" -> {
+                if (Key.get(3).compareTo(getkeyfromvalue) == 0) {
+                    wrapper.correct = true;
+                }
+
+                if (wrapper.correct) {
+                    System.out.println("Correct!!!");
+                } else {
+                    System.out.println("Wrong answer.");
+                }
+            }
+
+            default -> {
+                break;
+            }
+
+        }
+    }
 }

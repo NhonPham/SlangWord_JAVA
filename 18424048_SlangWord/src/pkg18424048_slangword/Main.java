@@ -103,6 +103,10 @@ public class Main {
                     DS.QuizWithRandomSlangWord(DB);
                     break;
                 }
+                case 10 -> {
+                    DS.QuizWithRandomDefinition(DB);
+                    break;
+                }
                 case 11 -> {
                     break;
                 }
