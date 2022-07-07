@@ -99,6 +99,10 @@ public class Main {
                     DS.OnThisDaySlangWord(DB);
                     break;
                 }
+                case 9 -> {
+                    DS.QuizWithRandomSlangWord(DB);
+                    break;
+                }
                 case 11 -> {
                     break;
                 }

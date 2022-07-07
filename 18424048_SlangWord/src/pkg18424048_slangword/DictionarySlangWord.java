@@ -336,4 +336,114 @@ public class DictionarySlangWord {
         System.out.println("Slang Word: " + randomKey + " - Definition: " + valueList);
 
     }
+    
+    public void QuizWithRandomSlangWord(Map<String, List<String>> DB) {
+
+        Set<String> keySet = DB.keySet();
+        List<String> keyList = new ArrayList<>(keySet);
+
+        int size = keyList.size(); //7640
+        int randIdx;
+        String randomSlangWord = "";
+        List<String> List = new ArrayList<>();
+        ArrayList<String> Key = new ArrayList<>();
+
+        for (int i = 1; i <= 4; i++) {
+            randIdx = new Random().nextInt(size);//randome num
+            randomSlangWord = keyList.get(randIdx);//get randomSlangWord key
+            Key.add(randomSlangWord);
+
+            List<String> ListMeanValue = DB.get(randomSlangWord);//get value with randomSlangWord key
+            List.addAll(ListMeanValue);
+        }
+
+        String cd = "";
+        cd = Key.get(new Random().nextInt(4));
+        System.out.println("What is the definition of this " + cd + " slang?");
+        List<String> temp = DB.get(cd);
+
+        Collections.shuffle(List);
+
+        System.out.println("A." + List.get(0));
+        System.out.println("B." + List.get(1));
+        System.out.println("C." + List.get(2));
+        System.out.println("D." + List.get(3));
+
+        System.out.println("Please choose the correct answer: ");
+        String choice = "";
+        Scanner sc = new Scanner(System.in);
+        choice = sc.nextLine();
+        var wrapper = new Object() {
+            boolean correct = false;
+        };
+
+        switch (choice.toLowerCase()) {
+            case "a" -> {
+                temp.forEach(t -> {
+                    if (t.compareTo(List.get(0)) == 0) {
+                        wrapper.correct = true;
+                    }
+                });
+
+                if (wrapper.correct) {
+                    System.out.println("Correct!!!");
+                } else {
+                    System.out.println("Wrong answer.");
+
+                }
+
+            }
+
+            case "b" -> {
+                temp.forEach(t -> {
+                    if (t.compareTo(List.get(1)) == 0) {
+                        wrapper.correct = true;
+                    }
+                });
+                if (wrapper.correct = true) {
+                    System.out.println("Correct!!!");
+                } else {
+                    System.out.println("Wrong answer.");
+
+                }
+
+            }
+
+            case "c" -> {
+                temp.forEach(t -> {
+                    if (t.compareTo(List.get(2)) == 0) {
+                        wrapper.correct = true;
+                    }
+                });
+
+                if (wrapper.correct) {
+                    System.out.println("Correct!!!");
+                } else {
+                    System.out.println("Wrong answer.");
+
+                }
+
+            }
+
+            case "d" -> {
+                temp.forEach(t -> {
+                    if (t.compareTo(List.get(3)) == 0) {
+                        wrapper.correct = true;
+                    }
+                });
+
+                if (wrapper.correct) {
+                    System.out.println("Correct!!!");
+                } else {
+
+                    System.out.println("Wrong answer.");
+                }
+            }
+
+            default -> {
+                break;
+            }
+        }
+    }
+    
 }
